@@ -98,79 +98,18 @@ public class StudentRegistry {
         return students;
     }
     
-    public static void addStudent() {
-        Student student = createStudent();
-        if (student == null) {
-            return;
-        }
-        
+    public static void addStudent(String firstName, String lastName, int age, String course, String nid) {
+        Student student = new Student(firstName, lastName, age, course, nid);
+
         BufferedWriter bw = getBufferedWriter(true);
         try {
             bw.write(student.getFirstName() + ";" + student.getLastName() + ";" + student.getAge() + ";" + student.getCourse() + ";" + student.getNid());
             bw.newLine();
             bw.flush();
             bw.close();
+            System.out.println("Student added correctly\n" + student + "\n");
         } catch (IOException e) {
             System.out.println("Error reading file");
-        }
-    }
-    
-    public static Student createStudent() {
-        BufferedReader brConsole = getBufferedReaderConsole();
-        System.out.println("------------------------------");
-        System.out.println("Creating a new student profile");
-        System.out.println("------------------------------");
-        while (true) {
-            try {
-                System.out.print("Enter first name: ");
-                String firstName = brConsole.readLine();
-                if (firstName.isEmpty()) {
-                    System.out.println("First Name is empty");
-                    continue;
-                }
-                
-                System.out.print("Enter last name: ");
-                String lastName = brConsole.readLine();
-                if (lastName.isEmpty()) {
-                    System.out.println("Last Name is empty");
-                    continue;
-                }
-                
-                int age;
-                try {
-                    System.out.print("Enter age: ");
-                    age = Integer.valueOf(brConsole.readLine());
-                    if (age < 0) {
-                        System.out.println("Age must be a positive integer");
-                        continue;
-                    }
-                } catch (NumberFormatException e) {
-                    System.out.println("Age must be an integer");
-                    continue;
-                }
-                
-                System.out.print("Enter course: ");
-                String course = brConsole.readLine();
-                if (course.isEmpty()) {
-                    System.out.println("Course is empty");
-                    continue;
-                }
-                
-                System.out.print("Enter NID: ");
-                String nid = brConsole.readLine();
-                if (nid.isEmpty()) {
-                    System.out.println("NID is empty");
-                    continue;
-                }
-                if (searchStudentByNid(nid) != null) {
-                    System.out.println("A student with this NID already exists");
-                    return null;
-                }
-                
-                return new Student(firstName, lastName, age, course, nid);
-            } catch (IOException e) {
-                System.out.println("Error reading console");
-            }
         }
     }
     
