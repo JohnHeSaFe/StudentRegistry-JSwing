@@ -7,3 +7,7 @@ Sara;Lopez;17;Arts;66554433P
 Pablo;Herrera;23;Physics;77889900Q  
 Lucia;Ortega;16;Chemistry;33445566R  
 Diego;Sanchez;25;ComputerScience;22110099S 
+A;A;2;A;12312312G
+A;A;2;Software Engineering Principles;46326231P
+Test;Hola;190;Database Fundamentals;00000000H
+Justin;Elmasguapo;2;Cybersecurity Basics;12345678F

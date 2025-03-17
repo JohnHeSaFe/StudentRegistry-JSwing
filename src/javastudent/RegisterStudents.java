@@ -5,8 +5,6 @@
 package javastudent;
 
 import JFrames.MainFrame;
-import java.io.BufferedReader;
-import java.io.IOException;
 import javax.swing.SwingUtilities;
 
 /**

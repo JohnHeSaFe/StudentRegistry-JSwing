@@ -37,22 +37,18 @@
           <Group type="102" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel7" alignment="0" pref="274" max="32767" attributes="0"/>
-                      <Component id="lastNameTextField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="ageSpinner" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                      <Component id="courseTextField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
-                      <Component id="nidTextField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
-                      <Component id="submitButton" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="firstNameTextField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel5" alignment="0" min="-2" pref="274" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jLabel7" alignment="0" pref="274" max="32767" attributes="0"/>
+                  <Component id="lastNameTextField" alignment="0" max="32767" attributes="0"/>
+                  <Component id="ageSpinner" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                  <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
+                  <Component id="nidTextField" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
+                  <Component id="submitButton" alignment="0" max="32767" attributes="0"/>
+                  <Component id="firstNameTextField" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabel5" alignment="0" pref="274" max="32767" attributes="0"/>
+                  <Component id="courseComboBox" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
@@ -87,7 +83,7 @@
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="courseTextField" min="-2" max="-2" attributes="0"/>
+                      <Component id="courseComboBox" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -159,16 +155,6 @@
         <Property name="text" type="java.lang.String" value="Course"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="courseTextField">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="courseTextFieldActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -231,8 +217,26 @@
           <Font name="Segoe UI Black" size="36" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Add a new student to the registry"/>
+        <Property name="text" type="java.lang.String" value="Add a new student"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="courseComboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="7">
+            <StringItem index="0" value="Introduction to Java"/>
+            <StringItem index="1" value="Web Development with HTML &amp; CSS"/>
+            <StringItem index="2" value="Database Fundamentals"/>
+            <StringItem index="3" value="Object-Oriented Programming"/>
+            <StringItem index="4" value="Data Structures &amp; Algorithms"/>
+            <StringItem index="5" value="Cybersecurity Basics"/>
+            <StringItem index="6" value="Software Engineering Principles"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

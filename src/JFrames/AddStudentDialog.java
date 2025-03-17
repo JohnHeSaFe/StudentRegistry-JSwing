@@ -38,13 +38,13 @@ public class AddStudentDialog extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         ageSpinner = new javax.swing.JSpinner();
         jLabel8 = new javax.swing.JLabel();
-        courseTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         nidTextField = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabelTitle1 = new javax.swing.JLabel();
+        courseComboBox = new javax.swing.JComboBox<>();
 
         jLabelTitle.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -77,13 +77,6 @@ public class AddStudentDialog extends javax.swing.JDialog {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Course");
-
-        courseTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        courseTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                courseTextFieldActionPerformed(evt);
-            }
-        });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("NID");
@@ -126,7 +119,9 @@ public class AddStudentDialog extends javax.swing.JDialog {
 
         jLabelTitle1.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabelTitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTitle1.setText("Add a new student to the registry");
+        jLabelTitle1.setText("Add a new student");
+
+        courseComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Introduction to Java", "Web Development with HTML & CSS", "Database Fundamentals", "Object-Oriented Programming", "Data Structures & Algorithms", "Cybersecurity Basics", "Software Engineering Principles" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,20 +130,18 @@ public class AddStudentDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                        .addComponent(lastNameTextField)
-                        .addComponent(ageSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(courseTextField)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(nidTextField)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(submitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(firstNameTextField)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                    .addComponent(lastNameTextField)
+                    .addComponent(ageSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nidTextField)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(submitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(firstNameTextField)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                    .addComponent(courseComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -179,7 +172,7 @@ public class AddStudentDialog extends javax.swing.JDialog {
                         .addGap(12, 12, 12)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(courseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(courseComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -204,57 +197,63 @@ public class AddStudentDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_lastNameTextFieldActionPerformed
 
-    private void courseTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_courseTextFieldActionPerformed
-
     private void nidTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nidTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nidTextFieldActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
-        // Obtain the values of the form
+        // Obtain the values from the form 
         String firstName = firstNameTextField.getText().trim();
         String lastName = lastNameTextField.getText().trim();
-        String course = courseTextField.getText().trim();
+        String course = courseComboBox.getSelectedItem().toString();
         String nid = nidTextField.getText().trim();
         int age = (int) ageSpinner.getValue();
 
         // Check if there aren't empty fields
         if (firstName.isEmpty() || lastName.isEmpty() || course.isEmpty() || nid.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Fill all fields", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error didn't filled all fields in AddStudentDialog");
             return;
         }
 
         // Validate all fields
+        // Name without numbers or special characters 
         if (!firstName.matches("^[a-zA-Z ]+") || !lastName.matches("^[a-zA-Z ]+")) {
             JOptionPane.showMessageDialog(this, "Name shouldn't contain numbers or special characters", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error firstName or lastName regex in AddStudentDialog");
             return;
         }
 
-        if (!course.matches("^[a-zA-Z0-9 ]+")) {
-            JOptionPane.showMessageDialog(this, "Course shouldn't contain special characters", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        if (age <= 0) {
+        // Age cannot be under 0 and above 120
+        if (age < 0) {
             JOptionPane.showMessageDialog(this, "Age must be greater than 0", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error age under 0 in AddStudentDialog");
+            return;
+        }
+        if (age > 120) {
+            JOptionPane.showMessageDialog(this, "Age not valid", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error age above 120 in AddStudentDialog");
             return;
         }
 
+        // NID should have 8 numbers followed by a capital letter
         if (!nid.matches("^[0-9]{8}[A-Z]")) {
             JOptionPane.showMessageDialog(this, "NID must contain 8 numbers followed with a capital letter", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error NID regex in AddStudentDialog");
             return;
         }
         
+        // Check if NID is already registered
         if (StudentRegistry.searchStudentByNid(nid) != null) {
             JOptionPane.showMessageDialog(this, "NID is already registried to another student", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error NID already exists in AddStudentDialog");
             return;
         }
         
         // Add student to the file
         StudentRegistry.addStudent(firstName, lastName, age, course, nid);
+        System.out.println("Added student from AddStudentDialog");
 
         // Show succesful message and return to home frame
         JOptionPane.showMessageDialog(this, "Student added succesfully", "Info", JOptionPane.INFORMATION_MESSAGE);
@@ -295,6 +294,7 @@ public class AddStudentDialog extends javax.swing.JDialog {
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.out.println("Closed AddStudentDialog");
                         System.exit(0);
                     }
                 });
@@ -305,7 +305,7 @@ public class AddStudentDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner ageSpinner;
-    private javax.swing.JTextField courseTextField;
+    private javax.swing.JComboBox<String> courseComboBox;
     private javax.swing.JTextField firstNameTextField;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
