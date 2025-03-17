@@ -22,13 +22,20 @@ public class ShowStudentsDialog extends javax.swing.JDialog {
     public ShowStudentsDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        System.out.println("Opened ShowStudentsDialog");
         
-        DefaultTableModel model = (DefaultTableModel) studentsTable.getModel();
+        // Change the size of the columns
+        studentsTable.getColumnModel().getColumn(0).setPreferredWidth(100); 
+        studentsTable.getColumnModel().getColumn(1).setPreferredWidth(100); 
+        studentsTable.getColumnModel().getColumn(2).setPreferredWidth(30);  
+        studentsTable.getColumnModel().getColumn(3).setPreferredWidth(200); 
+        studentsTable.getColumnModel().getColumn(4).setPreferredWidth(100); 
         
-        model.setRowCount(0);
-        
+        // Get the model to edit data
+        DefaultTableModel tableModel = (DefaultTableModel) studentsTable.getModel();
+        // Add students data from the file to the table
         for (Student student : StudentRegistry.getStudentsFromFile()) {
-            model.addRow(new Object[]{
+            tableModel.addRow(new Object[]{
                 student.getFirstName(), student.getLastName(), student.getAge(), student.getCourse(), student.getNid()
             });
         }
@@ -56,10 +63,7 @@ public class ShowStudentsDialog extends javax.swing.JDialog {
         studentsTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         studentsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Name", "Surname", "Age", "Course", "NID"
@@ -74,6 +78,7 @@ public class ShowStudentsDialog extends javax.swing.JDialog {
             }
         });
         studentsTable.setToolTipText("");
+        studentsTable.setCellSelectionEnabled(true);
         jScrollPane2.setViewportView(studentsTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -88,7 +93,7 @@ public class ShowStudentsDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabelTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
         );
 
         pack();
@@ -128,7 +133,6 @@ public class ShowStudentsDialog extends javax.swing.JDialog {
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.out.println("Closed ShowStudentDialog");
                         System.exit(0);
                     }
                 });

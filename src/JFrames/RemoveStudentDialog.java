@@ -4,6 +4,11 @@
  */
 package JFrames;
 
+import javastudent.Student;
+import javastudent.StudentRegistry;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author henar
@@ -16,6 +21,29 @@ public class RemoveStudentDialog extends javax.swing.JDialog {
     public RemoveStudentDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        System.out.println("Opened RemoveStudentDialog");
+        
+        // Change the size of the columns
+        studentsTable.getColumnModel().getColumn(0).setPreferredWidth(100); 
+        studentsTable.getColumnModel().getColumn(1).setPreferredWidth(100); 
+        studentsTable.getColumnModel().getColumn(2).setPreferredWidth(30);  
+        studentsTable.getColumnModel().getColumn(3).setPreferredWidth(200); 
+        studentsTable.getColumnModel().getColumn(4).setPreferredWidth(100); 
+        
+        // Get the model to edit data
+        DefaultTableModel model = (DefaultTableModel) studentsTable.getModel();
+
+        // Add students data from the file to the table
+        // Add NID to the combo box
+        for (Student student : StudentRegistry.getStudentsFromFile()) {
+            model.addRow(new Object[]{
+                student.getFirstName(), student.getLastName(), student.getAge(), student.getCourse(), student.getNid()
+            });
+            nidComboBox.addItem(student.getNid());
+        }
+        
+        // Default value of the combo box none
+        nidComboBox.setSelectedIndex(-1);
     }
 
     /**
@@ -28,9 +56,11 @@ public class RemoveStudentDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabelTitle1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        studentsList = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        studentsTable = new javax.swing.JTable();
+        nidComboBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        ConfirmButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -38,40 +68,97 @@ public class RemoveStudentDialog extends javax.swing.JDialog {
         jLabelTitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle1.setText("Remove student");
 
-        studentsList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(studentsList);
+        studentsTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        studentsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jLabel1.setText("List");
+            },
+            new String [] {
+                "Name", "Surname", "Age", "Course", "NID"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        studentsTable.setToolTipText("");
+        studentsTable.setCellSelectionEnabled(true);
+        jScrollPane2.setViewportView(studentsTable);
+
+        jLabel1.setText("Select NID to remove: ");
+
+        ConfirmButton.setText("Confirm Removal");
+        ConfirmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
+            .addComponent(jLabelTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, 867, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
             .addGroup(layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(174, 174, 174)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nidComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(ConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabelTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-                .addGap(201, 201, 201))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nidComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(ConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
+        // TODO add your handling code here:
+        String selectedNID = (String) nidComboBox.getSelectedItem();
+        
+        // Error if not selected a student
+        if (selectedNID == null) {
+            JOptionPane.showMessageDialog(this, "Select a NID before removing a student", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error no NID selected in RemoveStudentDialog");
+            return;    
+        }
+        
+        // Remove the student and inform
+        StudentRegistry.removeStudent(selectedNID);
+        JOptionPane.showMessageDialog(this, "Student removed succesfully", "Info", JOptionPane.INFORMATION_MESSAGE);
+        
+        // Remove NID from selection after removing the student
+        nidComboBox.removeItem(selectedNID);
+        nidComboBox.setSelectedIndex(-1);
+        
+        // Edit table to remove the information of the student comparing with the NID of the combo box
+        DefaultTableModel tableModel = (DefaultTableModel) studentsTable.getModel();
+        for (int i = 0; i < tableModel.getRowCount(); i++) {
+            if (tableModel.getValueAt(i, 4).equals(selectedNID)) {
+                tableModel.removeRow(i);
+            }
+        }
+        
+        System.out.println("Student removed in RemoveStudentDialog");
+    }//GEN-LAST:event_ConfirmButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,9 +203,11 @@ public class RemoveStudentDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ConfirmButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelTitle1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> studentsList;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JComboBox<String> nidComboBox;
+    private javax.swing.JTable studentsTable;
     // End of variables declaration//GEN-END:variables
 }

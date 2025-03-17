@@ -145,14 +145,14 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void showStudentJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showStudentJButtonActionPerformed
         ShowStudentsDialog jdialog = new ShowStudentsDialog(this, true);
+        jdialog.setLocationRelativeTo(this);
         jdialog.setVisible(true);
-        System.out.println("Opened ShowStudentsDialog");
     }//GEN-LAST:event_showStudentJButtonActionPerformed
 
     private void addStudentJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentJButton1ActionPerformed
         AddStudentDialog jdialog = new AddStudentDialog(this, true);
+        jdialog.setLocationRelativeTo(this);
         jdialog.setVisible(true);
-        System.out.println("Opened AddStudentDialog");
     }//GEN-LAST:event_addStudentJButton1ActionPerformed
 
     private void exitProgramJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitProgramJButton1ActionPerformed
@@ -161,14 +161,14 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void removeStudentJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeStudentJButton2ActionPerformed
         RemoveStudentDialog jdialog = new RemoveStudentDialog(this, true);
+        jdialog.setLocationRelativeTo(this);
         jdialog.setVisible(true);
-        System.out.println("Opened RemoveStudentDialog");
     }//GEN-LAST:event_removeStudentJButton2ActionPerformed
 
     private void searchStudentByNIDJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchStudentByNIDJButton2ActionPerformed
         SearchStudentDialog jdialog = new SearchStudentDialog(this, true);
+        jdialog.setLocationRelativeTo(this);
         jdialog.setVisible(true);
-        System.out.println("Opened SearchStudentDialog");
     }//GEN-LAST:event_searchStudentByNIDJButton2ActionPerformed
 
     /**

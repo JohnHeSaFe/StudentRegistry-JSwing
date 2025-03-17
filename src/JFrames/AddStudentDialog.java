@@ -19,6 +19,7 @@ public class AddStudentDialog extends javax.swing.JDialog {
     public AddStudentDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        System.out.println("Opened AddStudentDialog");
     }
 
     /**
@@ -74,6 +75,8 @@ public class AddStudentDialog extends javax.swing.JDialog {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Age");
+
+        ageSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 120, 1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Course");
@@ -219,26 +222,14 @@ public class AddStudentDialog extends javax.swing.JDialog {
 
         // Validate all fields
         // Name without numbers or special characters 
-        if (!firstName.matches("^[a-zA-Z ]+") || !lastName.matches("^[a-zA-Z ]+")) {
+        if (!firstName.matches("^[a-zA-Z ]+$") || !lastName.matches("^[a-zA-Z ]+$")) {
             JOptionPane.showMessageDialog(this, "Name shouldn't contain numbers or special characters", "Error", JOptionPane.ERROR_MESSAGE);
             System.out.println("Error firstName or lastName regex in AddStudentDialog");
             return;
         }
 
-        // Age cannot be under 0 and above 120
-        if (age < 0) {
-            JOptionPane.showMessageDialog(this, "Age must be greater than 0", "Error", JOptionPane.ERROR_MESSAGE);
-            System.out.println("Error age under 0 in AddStudentDialog");
-            return;
-        }
-        if (age > 120) {
-            JOptionPane.showMessageDialog(this, "Age not valid", "Error", JOptionPane.ERROR_MESSAGE);
-            System.out.println("Error age above 120 in AddStudentDialog");
-            return;
-        }
-
         // NID should have 8 numbers followed by a capital letter
-        if (!nid.matches("^[0-9]{8}[A-Z]")) {
+        if (!nid.matches("^[0-9]{8}[A-Z]$")) {
             JOptionPane.showMessageDialog(this, "NID must contain 8 numbers followed with a capital letter", "Error", JOptionPane.ERROR_MESSAGE);
             System.out.println("Error NID regex in AddStudentDialog");
             return;
@@ -294,7 +285,6 @@ public class AddStudentDialog extends javax.swing.JDialog {
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.out.println("Closed AddStudentDialog");
                         System.exit(0);
                     }
                 });

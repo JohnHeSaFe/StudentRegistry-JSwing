@@ -4,6 +4,10 @@
  */
 package JFrames;
 
+import javastudent.Student;
+import javastudent.StudentRegistry;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author henar
@@ -16,6 +20,7 @@ public class SearchStudentDialog extends javax.swing.JDialog {
     public SearchStudentDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        System.out.println("Opened SearchStudentDialog");
     }
 
     /**
@@ -27,21 +32,103 @@ public class SearchStudentDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelTitle1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        searchButton = new javax.swing.JButton();
+        searchTextField = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabelTitle1.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabelTitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTitle1.setText("Search student");
+
+        jLabel1.setText("Select NID to search: ");
+
+        searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+
+        searchTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchTextFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 843, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
+                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 607, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        String nid = searchTextField.getText();
+        
+        // NID field empty error
+        if (nid.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Please fill the field before searching", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error NID field empty in SearchStudentDialog");
+            return;
+        }
+        
+        // NID should have 8 numbers followed by a capital letter error
+        if (!nid.matches("^[0-9]{8}[A-Z]$")) {
+            JOptionPane.showMessageDialog(this, "NID must contain 8 numbers followed with a capital letter", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error NID regex in SearchStudentDialog");
+            return;
+        }
+        
+        // Search the students from the file
+        Student studentSearched = StudentRegistry.searchStudentByNid(nid);
+        
+        // Show info of the student or inform that there's no student with the NID introduced
+        if (studentSearched == null) {
+            JOptionPane.showMessageDialog(this, "No student with the NID " + nid, "Info", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println("Error no student with NID in SearchStudentDialog");
+        } else {
+            String studentInfo = "Name: " + studentSearched.getFirstName() + " " + studentSearched.getLastName() +
+                             "\nAge: " + studentSearched.getAge() +
+                             "\nCourse: " + studentSearched.getCourse() +
+                             "\nNID: " + studentSearched.getNid();
+            JOptionPane.showMessageDialog(this, studentInfo, "Student information", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println("Showed information of a student in SearchStudentDialog");
+        }
+        
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void searchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -86,5 +173,9 @@ public class SearchStudentDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelTitle1;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JTextField searchTextField;
     // End of variables declaration//GEN-END:variables
 }

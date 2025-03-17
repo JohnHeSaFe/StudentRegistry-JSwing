@@ -1,13 +1,13 @@
-Victor;Grier;19;DAM;87654321J  
-Elena;Martinez;21;Law;11223344K  
-Carlos;Ramirez;18;Engineering;55667788L  
-Laura;Fernandez;20;Medicine;99887766M  
-Andres;Gonzalez;22;Business;44332211N  
-Sara;Lopez;17;Arts;66554433P  
-Pablo;Herrera;23;Physics;77889900Q  
-Lucia;Ortega;16;Chemistry;33445566R  
-Diego;Sanchez;25;ComputerScience;22110099S 
-A;A;2;A;12312312G
-A;A;2;Software Engineering Principles;46326231P
-Test;Hola;190;Database Fundamentals;00000000H
-Justin;Elmasguapo;2;Cybersecurity Basics;12345678F
+Victor;Grier;19;Dam;87654321J
+Sara;Lopez;17;Arts;66554433P
+Lucia;Ortega;16;Chemistry;33445566R
+John Henard;Salango Fernandez;94;Data Structures & Algorithms;09876543H
+Miguel;Ramirez;21;Physics;11223344A
+Elena;Martinez;18;Mathematics;55667788B
+Carlos;Fernandez;22;Computer Science;99887766C
+Laura;Gomez;20;Biology;22334455D
+Pablo;Santos;23;Engineering;66778899E
+David;Morales;25;Law;88990011G
+Sofia;Jimenez;17;Literature;33221144H
+Fernando;Castro;24;Architecture;77665588I
+Dasd;Asdasd;1;Introduction To Java;12345678E
